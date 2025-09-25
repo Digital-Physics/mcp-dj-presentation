@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ MCP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      line-height: 1.6;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h1, h2 {
+      /* margin-bottom: 1rem; */
+      text-align: center;
+    }
+
+    p {
+      max-width: 700px;
+      text-align: center;
+      /* margin-bottom: 1.5rem; */
+    }
+
+    .thumbnail {
+      width: 420px;
+      margin: 10px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .code {
+      width: 390px;
+      margin: 2px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .code img {
+      width: 100%;
+      height: auto; /* auto height keeps aspect ratio */
+      display: block; /* removes any inline spacing issues */
+      object-fit: contain; /* ensures full image fits without distortion */
+      max-width: 100%; /* prevents overflow in case of any browser quirks */
+    }
+
+    .code2 {
+      width: 590px;
+      margin: 2px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .code2 img {
+      width: 100%;
+      height: auto; /* auto height keeps aspect ratio */
+      display: block; /* removes any inline spacing issues */
+      object-fit: contain; /* ensures full image fits without distortion */
+      max-width: 100%; /* prevents overflow in case of any browser quirks */
+    }
+
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    details {
+      width: fit-content;
+      margin: 1rem auto;
+      cursor: pointer;
+    }
+
+    summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      list-style: none; /* remove default triangle */
+      display: flex;
+      align-items: center;
+    }
+
+    /* Add a custom arrow that spins */
+    summary::before {
+      content: "▶";
+      display: inline-block;
+      margin-right: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Spin the arrow when open */
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .accordion {
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .accordion img {
+      width: 100%;
+      height: auto; 
+      display: block; 
+      object-fit: contain; 
+      max-width: 100%; 
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Title Slide -->
+  <section>
+    <h1>DJ MCP</h1>
+    <h4>or How I built a Model Context Protocol Server and Turned My Life Around</h4>
+  </section>
+
+  <!-- MCP precursor -->
+  <section>
+    <h2>How It Started</h2>
+    <p>MCP Precursor (Oct. 15, 2023)</p>
+    <p>Do you have an insurance question?😬</p>
+    <a href="https://github.com/Digital-Physics/ChatGPT-function-calling" target="_blank">
+      <div class="code2">
+        <img src="./img/screenshot.png">
+      </div>
+      <div class="code">
+        <img src="./img/precursor.png">
+      </div>
+    </a>
+  </section>
+
+  <!-- Demo -->
+  <section>
+    <h2>How It's Goin'</h2>
+    <p>DJ MCP 🤖💃🕺✨</p>
+    
+    <!-- <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121887893?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="DJ MCP Demo"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
+    <iframe src="https://player.vimeo.com/video/1121887893" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </section>
+
+  <!-- Diagram -->
+  <section>
+    <h2>Where It Should Go</h2>
+    <p>Non-local</p>
+    <a href="https://www.nets-vs-automata.net/" target="_blank">
+      <div class="code">
+        <img src="./img/mcp_diagram.png">
+      </div>
+    </a>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
